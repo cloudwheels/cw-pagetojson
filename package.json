@@ -1,0 +1,38 @@
+{
+  "name": "cw-pagetojson",
+  "version": "0.0.1",
+  "description": "Convert HTML page parts into JSON objects",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "build": "babel src --out-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudwheels/cw-pagetojson.git"
+  },
+  "keywords": [
+    "Convert",
+    "HTML",
+    "JSON"
+  ],
+  "author": "cloudwheels - original author Marius Augenstein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloudwheels/cw-pagetojson/issues"
+  },
+  "homepage": "https://github.com/cloudwheels/cw-pagetojson#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "listtojson": "0.0.4",
+    "tabletojson": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "coveralls": "^3.0.1",
+    "jest": "^23.6.0",
+    "prettier": "^1.13.5"
+  }
+}
