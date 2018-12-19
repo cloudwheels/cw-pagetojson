@@ -1,4 +1,5 @@
-import AbstractToJson, { convert } from '../src/AbstractToJson';
+/* eslint-disable max-len */
+import AbstractToJson, {convert} from '../src/AbstractToJson';
 
 /*
 process.on('unhandledRejection', up => {
@@ -6,17 +7,19 @@ process.on('unhandledRejection', up => {
 });
 */
 describe('AbstractToJson testing', function() {
-    let html = '';
+  // eslint-disable-next-line no-unused-vars
+  const html = '';
 
-    it('Trying to create an instance of AbstractToJson should throw an exception', () => {
-        expect(() => {
-            const a = new AbstractToJson();
-        }).toThrow('Constructor invocation not allowed on abstract class');
-    });
+  it('Trying to create an instance of AbstractToJson should throw an exception', () => {
+    expect(() => {
+      // eslint-disable-next-line no-unused-vars
+      const a = new AbstractToJson();
+    }).toThrow('Constructor invocation not allowed on abstract class');
+  });
 
-    it('calls convert and expects an exception', () => {
-        expect(convert).toThrow('Not callable on abstract class');
-    });
+  it('calls convert and expects an exception', () => {
+    expect(convert).toThrow('Not callable on abstract class');
+  });
 /* removed by cloudwheels
     it('calls convertUrl and expects an exception', async () => {
         //expect.assertions(1);
