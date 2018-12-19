@@ -1,4 +1,4 @@
-const AbstractToJson = require('../src/AbstractToJson');
+import AbstractToJson, { convert } from '../src/AbstractToJson';
 
 /*
 process.on('unhandledRejection', up => {
@@ -15,7 +15,7 @@ describe('AbstractToJson testing', function() {
     });
 
     it('calls convert and expects an exception', () => {
-        expect(AbstractToJson.convert).toThrow('Not callable on abstract class');
+        expect(convert).toThrow('Not callable on abstract class');
     });
 /* removed by cloudwheels
     it('calls convertUrl and expects an exception', async () => {
