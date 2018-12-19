@@ -29,7 +29,7 @@ npm install pagetojson
 ## Usage
 
 ```javascript
-const pagetojson = require('../lib/pagetojson');
+const pagetojson = require('../src/pagetojson');
 
 const converted = pagetojson.convert('HTML-STRING', {
     tags: ['table', 'list']
