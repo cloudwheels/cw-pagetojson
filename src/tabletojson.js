@@ -3,10 +3,10 @@
 /* eslint-disable require-jsdoc */
 'use strict';
 
-// import AbstractToJson from './AbstractToJson';
-const load = require('cheerio');
 
-export class tabletojson /* extends AbstractToJson */ {
+const cheerio = require('cheerio');
+
+export class tabletojson {
   /**
      * Static conversion of a given HTML Page
      * @param html {String} Html page content
@@ -56,7 +56,7 @@ export class tabletojson /* extends AbstractToJson */ {
     const jsonResponse = [];
     let suffix = undefined;
 
-    const $ = load(html);
+    const $ = cheerio.load(html);
 
     let additionalSelectors = options.containsClasses ? `.${options.containsClasses.join('.')}` : '';
     additionalSelectors = options.id ? `${additionalSelectors}#${options.id}` : '';
@@ -158,6 +158,8 @@ export class tabletojson /* extends AbstractToJson */ {
   }
 }
 
+module.exports = {
 
-export const convert = convert;
+  convert: tabletojson.convert,
 
+};

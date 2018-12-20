@@ -4,7 +4,7 @@
   "description": "Convert HTML page parts into JSON objects",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "build": "babel src --out-dir dist"
   },
   "repository": "git+https://github.com/cloudwheels/cw-pagetojson.git",
@@ -21,12 +21,14 @@
   "homepage": "https://github.com/cloudwheels/cw-pagetojson#readme",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "cheerio": "^1.0.0-rc.2",
     "yarn": "^1.12.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "config": "^3.0.1",
