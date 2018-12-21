@@ -158,8 +158,5 @@ export class tabletojson {
   }
 }
 
-module.exports = {
+export const convert = tabletojson.convert;
 
-  convert: tabletojson.convert,
-
-};
