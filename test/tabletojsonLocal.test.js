@@ -16,7 +16,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Options: Strip HTML from header AND from body', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       stripHtmlFromHeadings: true,
       stripHtmlFromCells: true,
     });
@@ -29,7 +29,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Options: Strip HTML from header AND from body using stripHtml-shortcut ', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       stripHtml: true,
     });
     expect(converted).toBeDefined();
@@ -41,7 +41,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Options: Strip HTML from header but not from body', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       stripHtmlFromHeadings: true,
       stripHtmlFromCells: false,
     });
@@ -54,7 +54,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Options: Strip HTML from body but not from header', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       stripHtmlFromHeadings: false,
       stripHtmlFromCells: true,
     });
@@ -68,7 +68,7 @@ describe('TableToJSON Local', function() {
 
   // ADDED TO FIX: https://github.com/maugenst/tabletojson/issues/15
   it('Double Header Entry: handle double header entries in different tables', async function() {
-    const converted = await t2j.convert(html);
+    const converted = await t2j.default(html);
     expect(converted).toBeDefined();
 
     const firstTable = converted[0];
@@ -79,7 +79,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Double Header Entry: handle double header entries', async function() {
-    const converted = await t2j.convert(html);
+    const converted = await t2j.default(html);
     expect(converted).toBeDefined();
 
     const firstTable = converted[0];
@@ -89,7 +89,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Directly local html content: Table with header', async function() {
-    const converted = await t2j.convert(html);
+    const converted = await t2j.default(html);
     expect(converted).toBeDefined();
 
     const firstTable = converted[0];
@@ -100,7 +100,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Do not strip HTML from header', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       stripHtml: false,
     });
     expect(converted).toBeDefined();
@@ -113,7 +113,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Directly passing html content: Table without header', async function() {
-    const converted = await t2j.convert(html);
+    const converted = await t2j.default(html);
     expect(converted).toBeDefined();
 
     const thirdTable = converted[2];
@@ -128,7 +128,7 @@ describe('TableToJSON Local', function() {
 
   // ADDED TO FIX: https://github.com/maugenst/tabletojson/issues/14
   it('Empty header: to be converted into their column count and not to the underline field name', async function() {
-    const converted = await t2j.convert(html);
+    const converted = await t2j.default(html);
     expect(converted).toBeDefined();
 
     const forthTable = converted[3];
@@ -141,7 +141,7 @@ describe('TableToJSON Local', function() {
 
   // ADDED TO FIX: https://github.com/maugenst/tabletojson/pull/18
   it('Double Header Entry: countDuplicateHeadings:false', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       countDuplicateHeadings: false,
     });
     expect(converted).toBeDefined();
@@ -165,7 +165,7 @@ describe('TableToJSON Local', function() {
 
   // ADDED TO FIX: https://github.com/maugenst/tabletojson/pull/18
   it('Double Header Entry: countDuplicateHeadings:true', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       countDuplicateHeadings: true,
     });
     expect(converted).toBeDefined();
@@ -193,7 +193,7 @@ describe('TableToJSON Local', function() {
 
   // FEATURE 'ignoreColumns'
   it('Option: ignoreColumns: [2, 3]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       ignoreColumns: [2, 3],
     });
     expect(converted).toBeDefined();
@@ -230,7 +230,7 @@ describe('TableToJSON Local', function() {
 
   // FEATURE 'onlyColumns'
   it('Option: onlyColumns: [0, 4]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       onlyColumns: [0, 4],
       ignoreColumns: [2, 4],
     });
@@ -265,7 +265,7 @@ describe('TableToJSON Local', function() {
 
   // FEATURE 'ignoreHiddenRows:true'
   it('Option: ignoreHiddenRows:true', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       ignoreHiddenRows: true,
     });
     expect(converted).toBeDefined();
@@ -283,7 +283,7 @@ describe('TableToJSON Local', function() {
 
   // FEATURE 'ignoreHiddenRows:false'
   it('Option: ignoreHiddenRows:false', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       ignoreHiddenRows: false,
     });
     expect(converted).toBeDefined();
@@ -301,7 +301,7 @@ describe('TableToJSON Local', function() {
 
   // FEATURE 'headings: ['A', 'B', 'C', 'D', 'E']'
   it('Option: headings: ["A","B","C","D","E"]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       headings: ['A', 'B', 'C', 'D', 'E'],
     });
     expect(converted).toBeDefined();
@@ -319,7 +319,7 @@ describe('TableToJSON Local', function() {
 
   // FEATURE 'headings: ['A', 'B', 'C']'
   it('Option: headings: ["A","B","C"]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       headings: ['A', 'B', 'C'],
     });
     expect(converted).toBeDefined();
@@ -343,7 +343,7 @@ describe('TableToJSON Local', function() {
      */
   // FEATURE 'headings: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']'
   it('Option: headings: ["A","B","C","E","E","F","G","H","I"]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       headings: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
     });
     expect(converted).toBeDefined();
@@ -384,7 +384,7 @@ describe('TableToJSON Local', function() {
      */
   // FEATURE 'headings: ['A', 'B', 'C'] && ignoreColumns: [1, 2]'
   it('Option: headings: ["A","B","C"] && ignoreColumns: [1, 2]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       headings: ['A', 'B', 'C'],
       ignoreColumns: [1, 2],
     });
@@ -421,7 +421,7 @@ describe('TableToJSON Local', function() {
      */
   // FEATURE 'headings: ['A', 'B', 'C'] && ignoreColumns: [1, 2] && onlyColumns: [0, 4]'
   it('Option: headings: ["A","B","C"] && ignoreColumns: [1, 2] && onlyColumns: [0, 4]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       headings: ['A', 'B', 'C'],
       ignoreColumns: [1, 2],
       onlyColumns: [0, 4],
@@ -456,7 +456,7 @@ describe('TableToJSON Local', function() {
      */
   // FEATURE 'headings: ['A'] && ignoreColumns: [1, 2] && onlyColumns: [0, 4]'
   it('Option: headings: ["A"] && ignoreColumns: [1, 2] && onlyColumns: [0, 4]', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       headings: ['A'],
       ignoreColumns: [1, 2],
       onlyColumns: [0, 4],
@@ -482,7 +482,7 @@ describe('TableToJSON Local', function() {
 
   // FIX/TEST: https://github.com/maugenst/tabletojson/issues/19
   it('Test to check conversion and handling of Kanji, Hiragana, Katakana and latin texts', async function() {
-    const converted = await t2j.convert(html);
+    const converted = await t2j.default(html);
     expect(converted).toBeDefined();
 
     const table = converted[6];
@@ -502,14 +502,14 @@ describe('TableToJSON Local', function() {
 
   // ENHANCEMENT: https://github.com/maugenst/tabletojson/issues/30
   it('limit results to only get a configurable amount of rows', async function() {
-    let converted = await t2j.convert(html);
+    let converted = await t2j.default(html);
     expect(converted).toBeDefined();
 
     let table = converted[9];
 
     expect(table.length).toBe(200);
 
-    converted = await t2j.convert(html, {
+    converted = await t2j.default(html, {
       limitrows: 5,
     });
 
@@ -523,7 +523,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Options: containsClasses', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       containsClasses: ['table'],
     });
     expect(converted).toBeDefined();
@@ -535,7 +535,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Options: byId', async function() {
-    const converted = await t2j.convert(html, {
+    const converted = await t2j.default(html, {
       id: ['table9'],
     });
     expect(converted).toBeDefined();
@@ -548,7 +548,7 @@ describe('TableToJSON Local', function() {
   });
 
   it('Options: converting an html page with no tables', async function() {
-    const converted = await t2j.convert(noTables);
+    const converted = await t2j.default(noTables);
     expect(converted).toBeDefined();
     expect(converted.length).toBe(0);
   });

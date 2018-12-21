@@ -10,11 +10,12 @@ module.exports = {
     contentBase: './dist',
   },
   entry: {
-    app: './src/index.js',
+    app: './src/tabletojson.js',
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    library: 'convert',
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),

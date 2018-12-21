@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="app.bundle.js"></script>
     <meta charset="utf-8"/>
     <title><%= htmlWebpackPlugin.options.title %></title>
     <div>Hello</div>
-    <div><script>
-     
-    app.convert('<table><thead><tr></tr> <th>Header</th></tr></thead><tbody><tr><td>woohoo</td></tr> </tbody> </table>') 
+    <div><script type="text/javascript">
+    
+    var conv = this.convert.default('<table><thead><tr></tr> <th>Header</th></tr></thead><tbody><tr><td>woohoo</td></tr> </tbody> </table>', {}); 
+    console.log(JSON.stringify(conv));
   </script>
     </div>
   </head>
