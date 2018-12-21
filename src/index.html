@@ -7,7 +7,7 @@
     <div>Hello</div>
     <div><script type="text/javascript">
     
-    var conv = this.convert.default('<table><thead><tr></tr> <th>Header</th></tr></thead><tbody><tr><td>woohoo</td></tr> </tbody> </table>', {}); 
+    var conv = this.convert.default('<html><table><thead><tr></tr><th>Header</th></tr></thead><tbody><tr><td>woohoo</td></tr></tbody></table><table><thead><tr></tr><th>T2 Header</th></tr></thead><tbody><tr><td>wahay</td></tr></tbody></table></html>', {}); 
     console.log(JSON.stringify(conv));
   </script>
     </div>
