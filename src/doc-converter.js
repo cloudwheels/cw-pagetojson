@@ -29,7 +29,7 @@ class ConvertedDoc {
       // catch
 
       if (_doc && docconverter) {
-        const _docconverter = new docconverter()
+        const _docconverter = new docconverter();
         _docconverter.docToConvert = _doc;
         _docconverter.convertedDoc
             .then((result) => {
@@ -51,9 +51,9 @@ class ConvertedDoc {
 // eslint-disable-next-line max-len
 
 
-function validHTTPResponse(reqURL, format) {
+function validHTTPResponse(reqURL, options, format) {
   return new Promise((resolve, reject)=> {
-    fetch.fetch(reqURL)
+    fetch.fetch(reqURL, options)
         .then((response)=>{
           if (response.status >= 200 && response.status < 300) {
             switch (format) {
@@ -83,11 +83,18 @@ validHTTPResponse('https://en.wikipedia.org/wiki/List_of_country_calling_codes',
     });
 */
 
-
+const searchText = 'picea';
+const rhsdbRoot = 'http://apps.rhs.org.uk/horticulturaldatabase/';
+const rhsHGParams = new URLSearchParams();
+rhsHGParams.append('txtName', searchText);
 
 ConvertedDoc.convert(
     // Promise.resolve('mydoc'), // a  promise for a document
-    validHTTPResponse('https://en.wikipedia.org/wiki/List_of_country_calling_codes', 'text'),
+    // validHTTPResponse('https://en.wikipedia.org/wiki/List_of_country_calling_codes', 'text'),
+
+    // eslint-disable-next-line max-len
+    validHTTPResponse(rhsdbRoot+'HortGenera.asp', {method: 'POST', body: rhsHGParams}, 'text'),
+
     // promise for the reponse body of url as text
     /*
     {convert:
@@ -105,8 +112,7 @@ ConvertedDoc.convert(
     .catch(((error)=>console.log(error)));
 
 
-
-    /*
+/*
     const teststring = '<html><table><thead><tr></tr><th>Header</th></tr></thead><tbody><tr><td>woohoo</td></tr></tbody></table><table><thead><tr></tr><th>T2 Header</th></tr></thead><tbody><tr><td>wahay</td></tr></tbody></table></html>'
 const converter = new HTMLTableToJsonConverter();
 console.log('options:', JSON.stringify(converter.options));
