@@ -83,7 +83,7 @@ validHTTPResponse('https://en.wikipedia.org/wiki/List_of_country_calling_codes',
     });
 */
 
-const searchText = 'picea';
+const searchText = 'pri';
 const rhsdbRoot = 'http://apps.rhs.org.uk/horticulturaldatabase/';
 const rhsHGParams = new URLSearchParams();
 rhsHGParams.append('txtName', searchText);

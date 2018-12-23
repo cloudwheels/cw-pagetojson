@@ -42,7 +42,8 @@ class HTMLTableToJsonConverter {
        * @param options.onlyColumns {Array} Array of column indices to be used. Overrides ignoreColumn [default=null]
        * @param options.ignoreHiddenRows Ignoring hidden rows [default=true]
        * @param options.headings {Array} Array of Strings to be used as headings [default=null]
-       * @param options.headings {Array} Array of classes to find a specific table [default=null]
+       * @param options.containsClasses {Array} Array of classes to find a specific table [default=null]
+       * @param options.id any Use unknown
        * @param options.limitrows {Integer} Integer that limits the result of all rows to a given amount of data [default=null]
        * @return {Object} Converted Object as an object literal
        */
@@ -87,10 +88,11 @@ class HTMLTableToJsonConverter {
     let suffix = undefined;
 
     const $ = cheerio.load(this._docToConvert); // TODO: if we have one!
+    const self = this;
 
     let additionalSelectors = this.options.containsClasses ? `.${this.options.containsClasses.join('.')}` : '';
     additionalSelectors = this.options.id ? `${additionalSelectors}#${this.options.id}` : '';
-    const self = this;
+
     $(`table${additionalSelectors}`).each(function(i, table) {
       const tableAsJson = [];
       const alreadySeen = {};
